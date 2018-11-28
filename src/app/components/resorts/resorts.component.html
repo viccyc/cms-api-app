@@ -23,6 +23,7 @@
       <label>Phone:</label>
       <div><textarea [(ngModel)]="resortPhone" name="resortPhone" ngDefaultControl></textarea></div>
     </div>
-    <button [(ngModel)]="nextBtn" (click)="getNextResort()" [disabled]='isDisabled'>Next</button>
+    <button (click)="getPrevResort()" [disabled]='isPrevDisabled'>Prev</button>
+    <button (click)="getNextResort()" [disabled]='isNextDisabled'>Next</button>
   </div>
 </ng-container>

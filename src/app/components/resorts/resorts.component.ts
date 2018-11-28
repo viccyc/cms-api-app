@@ -18,7 +18,8 @@ export class ResortsComponent implements OnInit {
   resortCountry: string;
   resortPhone: string;
   resortCount = 0;
-  isDisabled: boolean = false;
+  isNextDisabled: boolean = false;
+  isPrevDisabled: boolean = true;
 
   constructor(private resortService: ResortService) { }
 
@@ -43,8 +44,30 @@ export class ResortsComponent implements OnInit {
       this.resortCountry = this.resorts.data[this.resortCount].resort_country;
       this.resortPhone = this.resorts.data[this.resortCount].resort_phone;
       this.resortCount++;
-    } else {
-      this.isDisabled = true;
+      if (this.resorts.data.length === this.resortCount) {
+        this.isNextDisabled = true;
+        this.isPrevDisabled = false;
+        this.resortCount--;
+      }
+    }
+  }
+
+  getPrevResort() {
+    console.log('this.resorts.data.length: ', this.resorts.data.length);
+    console.log('this.resortCount: ', this.resortCount);
+
+    if (this.resorts.data.length >= this.resortCount) {
+      this.resortCount = this.resortCount - 1;
+      this.resortName = this.resorts.data[this.resortCount].resort_name;
+      this.resortAddr = this.resorts.data[this.resortCount].resort_address;
+      this.resortCity = this.resorts.data[this.resortCount].resort_city;
+      this.resortCountry = this.resorts.data[this.resortCount].resort_country;
+      this.resortPhone = this.resorts.data[this.resortCount].resort_phone;
+      if (this.resortCount === 0) {
+        this.isNextDisabled = false;
+        this.isPrevDisabled = true;
+        this.resortCount++;
+      }
     }
   }
 
