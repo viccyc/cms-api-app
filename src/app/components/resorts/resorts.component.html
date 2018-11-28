@@ -1,0 +1,28 @@
+<button class="lookUpResorts" title="Check our resorts"
+        (click)="getResorts()">Check out these resorts!</button>
+
+<ng-container *ngIf="show">
+  <div class="resortClass">
+    <div>
+      <label>Resort Name:</label>
+      <div><textarea [(ngModel)]="resortName" name="resortName" ></textarea></div>
+    </div>
+    <div>
+      <label>Address:</label>
+      <div><textarea [(ngModel)]="resortAddr" name="resortAddr" ></textarea></div>
+    </div>
+    <div>
+      <label>City:</label>
+      <div><textarea [(ngModel)]="resortCity" name="resortCity" ></textarea></div>
+    </div>
+    <div>
+      <label>Country:</label>
+      <div><textarea [(ngModel)]="resortCountry" name="resortCountry" ></textarea></div>
+    </div>
+    <div>
+      <label>Phone:</label>
+      <div><textarea [(ngModel)]="resortPhone" name="resortPhone" ngDefaultControl></textarea></div>
+    </div>
+    <button [(ngModel)]="nextBtn" (click)="getNextResort()" [disabled]='isDisabled'>Next</button>
+  </div>
+</ng-container>
