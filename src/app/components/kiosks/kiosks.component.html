@@ -1,3 +1,13 @@
-<p>
-  kiosks works!
-</p>
+<button class="lookUpKiosks" title="Check our kiosks"
+        (click)="getKiosks()">Where are our kiosks?</button>
+
+<ng-container *ngIf="show">
+  <div class="kioskClass">
+    <div>
+      <label>kiosk Name:</label>
+      <div><textarea [(ngModel)]="kioskName" name="kioskName" ></textarea></div>
+    </div>
+    <button (click)="getPrevKiosk()" [disabled]='isPrevDisabled'>Prev</button>
+    <button (click)="getNextKiosk()" [disabled]='isNextDisabled'>Next</button>
+  </div>
+</ng-container>

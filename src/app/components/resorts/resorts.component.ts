@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ResortService } from '../../services/resorts/resort.service';
-import {Observable, Subject} from 'rxjs';
-import {getNextLNode} from '@angular/core/src/render3/node_manipulation';
 
 @Component({
   selector: 'app-resorts',
