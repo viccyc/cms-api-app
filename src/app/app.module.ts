@@ -5,13 +5,16 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ResortsComponent } from './components/resorts/resorts.component';
+import { KiosksComponent } from './components/kiosks/kiosks.component';
 
-import { ResortService } from './services/resort.service';
+import { ResortService } from './services/resorts/resort.service';
+import { KioskService } from './services/kiosks/kiosk.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResortsComponent
+    ResortsComponent,
+    KiosksComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,8 @@ import { ResortService } from './services/resort.service';
     FormsModule
   ],
   providers: [
-    ResortService
+    ResortService,
+    KioskService
   ],
   bootstrap: [AppComponent]
 })
