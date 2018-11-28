@@ -31,18 +31,13 @@ export class ResortsComponent implements OnInit {
     this.resortService.getResorts()
       .subscribe(resorts => {
         this.resorts = resorts;
-        console.log('this.resorts: ', this.resorts.data);
         this.getNextResort();
       });
   }
 
   getNextResort() {
     if (this.resorts.data.length > this.resortCount) {
-      this.resortName = this.resorts.data[this.resortCount].resort_name;
-      this.resortAddr = this.resorts.data[this.resortCount].resort_address;
-      this.resortCity = this.resorts.data[this.resortCount].resort_city;
-      this.resortCountry = this.resorts.data[this.resortCount].resort_country;
-      this.resortPhone = this.resorts.data[this.resortCount].resort_phone;
+      this.updateResortData();
       this.resortCount++;
       if (this.resorts.data.length === this.resortCount) {
         this.isNextDisabled = true;
@@ -53,22 +48,23 @@ export class ResortsComponent implements OnInit {
   }
 
   getPrevResort() {
-    console.log('this.resorts.data.length: ', this.resorts.data.length);
-    console.log('this.resortCount: ', this.resortCount);
-
     if (this.resorts.data.length >= this.resortCount) {
       this.resortCount = this.resortCount - 1;
-      this.resortName = this.resorts.data[this.resortCount].resort_name;
-      this.resortAddr = this.resorts.data[this.resortCount].resort_address;
-      this.resortCity = this.resorts.data[this.resortCount].resort_city;
-      this.resortCountry = this.resorts.data[this.resortCount].resort_country;
-      this.resortPhone = this.resorts.data[this.resortCount].resort_phone;
+      this.updateResortData();
       if (this.resortCount === 0) {
         this.isNextDisabled = false;
         this.isPrevDisabled = true;
         this.resortCount++;
       }
     }
+  }
+
+  updateResortData() {
+    this.resortName = this.resorts.data[this.resortCount].resort_name;
+    this.resortAddr = this.resorts.data[this.resortCount].resort_address;
+    this.resortCity = this.resorts.data[this.resortCount].resort_city;
+    this.resortCountry = this.resorts.data[this.resortCount].resort_country;
+    this.resortPhone = this.resorts.data[this.resortCount].resort_phone;
   }
 
 }
