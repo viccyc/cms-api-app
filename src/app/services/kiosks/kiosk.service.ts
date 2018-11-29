@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
 
 interface JSONObject {
   _id: string;
   kioskName: string;
 }
+
+const headers = new HttpHeaders()
+  .set('Authorization', 'Bearer 4567xyz');
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +19,15 @@ export class KioskService {
     this.getKiosks();
   }
 
-  // let headers = new Headers();
-  // headers.append('authentication', 'Bearer 4567xyz');
-
-
   apiUrl = 'http://directus.vcg/_/items/kiosks';
 
   getKiosks() {
-    const headers = new HttpHeaders()
-      .set('Authorization', 'Bearer 4567xyz');
     return this.http.get<JSONObject>(this.apiUrl, {headers});
+  }
+
+  addKiosk(kioskName) {
+    const kioskNameJson = {"kiosk_name": kioskName};
+    return this.http.post<JSONObject>(this.apiUrl, kioskNameJson, {headers});
   }
 }
 

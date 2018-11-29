@@ -14,6 +14,7 @@ export class KiosksComponent implements OnInit {
   kioskCount = 0;
   isNextDisabled: boolean = false;
   isPrevDisabled: boolean = true;
+  result: any;
 
   constructor(private kioskService: KioskService) { }
 
@@ -55,6 +56,14 @@ export class KiosksComponent implements OnInit {
 
   updateKioskData() {
     this.kioskName = this.kiosks.data[this.kioskCount].kiosk_name;
+  }
+
+  addKiosk() {
+    this.kioskService.addKiosk('Second left')
+      .subscribe(result => {
+        this.result = result;
+        console.log('result: ', result);
+      });
   }
 }
 
