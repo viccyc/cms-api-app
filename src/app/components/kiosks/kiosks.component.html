@@ -14,3 +14,9 @@
     <button class="lookUpKiosks" (click)="addKiosk()">Add Kiosk</button>
   </div>
 </ng-container>
+<ng-container *ngIf="newKiosk">
+  <div class="kioskClass">
+    <textarea [(ngModel)]="newKioskName">New kiosk Name</textarea>
+    <button (click)="addNewKiosk(newKioskName)">GO!</button>
+  </div>
+</ng-container>

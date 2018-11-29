@@ -10,6 +10,7 @@ export class KiosksComponent implements OnInit {
 
   kiosks: any;
   public show: boolean = false;
+  public newKiosk: boolean = false;
   kioskName: string;
   kioskCount = 0;
   isNextDisabled: boolean = false;
@@ -59,7 +60,11 @@ export class KiosksComponent implements OnInit {
   }
 
   addKiosk() {
-    this.kioskService.addKiosk('Second left')
+    this.newKiosk = !this.newKiosk;
+  }
+
+  addNewKiosk(kioskName) {
+    this.kioskService.addKiosk(kioskName)
       .subscribe(result => {
         this.result = result;
         console.log('result: ', result);
