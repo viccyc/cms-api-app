@@ -10,7 +10,7 @@ import { TicketsComponent } from './components/tickets/tickets.component';
 
 import { ResortService } from './services/resorts/resort.service';
 import { KioskService } from './services/kiosks/kiosk.service';
-import { TicketsService } from './services/tickets.service';
+import { TicketsService } from './services/tickets/tickets.service';
 
 @NgModule({
   declarations: [
