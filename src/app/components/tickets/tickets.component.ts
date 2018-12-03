@@ -8,22 +8,29 @@ import { TicketsService } from '../../services/tickets/tickets.service';
 })
 export class TicketsComponent implements OnInit {
 
-  tickets: any;
-  ticketName: any;
+  public tickets: any[];
+  public cacheTickets: any[];
+  public ticketNames: any;
   public show: boolean = false;
 
-  constructor(private ticketService: TicketsService) { }
+  constructor(private ticketService: TicketsService) {
+    this.ticketService.getTickets()
+      .subscribe(tickets => {
+        this.tickets = tickets.data;
+        this.cacheTickets = this.tickets;
+        this.ticketNames = this.tickets;
+      }, error => console.error());
+  }
 
   ngOnInit() {
   }
 
-  getTickets() {
-    this.show = !this.show;
-    this.ticketService.getTickets()
-      .subscribe(tickets => {
-        this.tickets = tickets;
-        console.log('tickets: ', tickets);
-        this.ticketName = this.tickets;
-      });
+  getTickets(filterVal: any) {
+    this.show = true;
+    if (filterVal === '0') {
+      this.tickets = this.cacheTickets;
+    } else {
+      this.tickets = this.cacheTickets.filter((item) => item.ticketName === filterVal);
+    }
   }
 }

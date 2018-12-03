@@ -5,8 +5,16 @@
   <div class="ticketClass">
     <div>
       <label>What kind of ticket would you like:</label>
-      <div><select [(ngModel)]="ticketName" name="ticketName" (change)="getTickets"></select></div>
+      <div>
+        <select (change)="getTickets($event.target.value)">
+          <option value="0">--All--</option>
+          <option *ngFor="let ticketName of ticketNames" value={{ticketName.ticket_type}}>
+            {{ticketName.ticket_type}} : Price: ${{ticketName.ticket_price}}
+          </option>
+        </select>
+      </div>
       <button class="lookUpTickets" (click)="purchaseTickets">BUY</button>
     </div>
   </div>
 </ng-container>
+
