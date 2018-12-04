@@ -92,7 +92,25 @@ export class TicketsComponent implements OnInit {
   }
 
   purchaseTickets() {
-    this.ticketService.purchaseTickets();
-    this.buy = true;
+    // this.ticketService.purchaseTickets();
+    // this.buy = true;
+    console.log('in purchaseTickets()');
+
+    const handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_txJbZH4ucp67IJiIvkyzixCh',
+      locale: 'auto',
+      token: function (token: any) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+      }
+    });
+
+    handler.open({
+      name: 'TixHelp',
+      description: 'Ticket Purchase',
+      amount: 6000,
+      currency: 'cad'
+    });
+
   }
 }

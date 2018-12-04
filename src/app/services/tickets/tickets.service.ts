@@ -33,6 +33,6 @@ export class TicketsService {
     //   receipt_email: 'viccyc@hotmail.com',
     // });
 
-    console.log('charge: ', charge);
+    // console.log('charge: ', charge);
   }
 }
