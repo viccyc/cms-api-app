@@ -12,9 +12,20 @@
             {{ticketName.ticket_type}} : Price: ${{ticketName.ticket_price}}
           </option>
         </select>
+        <button class="lookUpTickets" (click)="purchaseTickets">BUY</button>
       </div>
-      <button class="lookUpTickets" (click)="purchaseTickets">BUY</button>
     </div>
   </div>
 </ng-container>
+<ng-container *ngIf="buy">
+  <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+    <div class="form-row">
+      <label for="card-info">Card Info</label>
+      <div id="card-info" #cardInfo></div>
 
+      <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+    </div>
+
+    <button type="submit">Pay $777</button>
+  </form>
+</ng-container>
