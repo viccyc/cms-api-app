@@ -1,10 +1,13 @@
-<button class="lookUpTickets" title="Check our tickets"
+<div>
+  <img class="homepageImg" src="https://eventshakuba.com/wp-content/uploads/2018/06/Hakuba-Lift-Ticket-Icon-1.png">
+</div>
+  <button class="lookUpTickets" title="Check our tickets"
         (click)="getTickets()">Buy tickets</button>
 
 <ng-container *ngIf="show">
   <div class="ticketClass">
     <div>
-      <label>What kind of ticket would you like:</label>
+      <label style="color: white;">What kind of ticket would you like:</label>
       <div>
         <select (change)="getTickets($event.target.value)">
           <option value="0">--All--</option>

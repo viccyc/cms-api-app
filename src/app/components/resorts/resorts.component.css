@@ -1,9 +1,15 @@
 .lookUpResorts {
   margin-left: 20px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .resortClass {
   margin: 20px;
   text-align: left;
+}
+
+.homepageImg {
+  margin-left: 20px;
+  width: 150px;
 }

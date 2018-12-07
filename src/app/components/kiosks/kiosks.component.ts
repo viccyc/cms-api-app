@@ -35,6 +35,9 @@ export class KiosksComponent implements OnInit {
     if (this.kiosks.data.length > this.kioskCount) {
       this.updateKioskData();
       this.kioskCount++;
+      if (this.kioskCount > 1) {
+        this.isPrevDisabled = false;
+      }
       if (this.kiosks.data.length === this.kioskCount) {
         this.isNextDisabled = true;
         this.isPrevDisabled = false;
@@ -47,6 +50,9 @@ export class KiosksComponent implements OnInit {
     if (this.kiosks.data.length >= this.kioskCount) {
       this.kioskCount = this.kioskCount - 1;
       this.updateKioskData();
+      if (this.kioskCount < 20) {
+        this.isNextDisabled = false;
+      }
       if (this.kioskCount === 0) {
         this.isNextDisabled = false;
         this.isPrevDisabled = true;

@@ -1,6 +1,7 @@
 .lookUpTickets {
   margin-left: 20px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .ticketClass {
@@ -58,3 +59,7 @@ form.checkout button:active {
   background-color: #fefde5 !important;
 }
 
+.homepageImg {
+  margin: 20px;
+  width: 150px;
+}

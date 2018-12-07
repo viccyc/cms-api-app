@@ -1,9 +1,15 @@
 .lookUpKiosks {
   margin-left: 20px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .kioskClass {
   margin: 20px;
   text-align: left;
+}
+
+.homepageImg {
+  margin: 20px;
+  width: 150px;
 }

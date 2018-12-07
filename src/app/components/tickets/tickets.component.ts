@@ -2,6 +2,7 @@ import {
   Component,
   OnInit } from '@angular/core';
 import { TicketsService } from '../../services/tickets/tickets.service';
+import {tick} from '@angular/core/testing';
 
 @Component({
   selector: 'app-tickets',
@@ -19,7 +20,7 @@ export class TicketsComponent implements OnInit {
   constructor(private ticketService: TicketsService) {
     this.ticketService.getTickets()
       .subscribe(tickets => {
-        this.tickets = tickets.data;
+        this.tickets = tickets['data'];
         this.cacheTickets = this.tickets;
         this.ticketNames = this.tickets;
       }, error => console.error());
@@ -38,6 +39,8 @@ export class TicketsComponent implements OnInit {
   }
 
   purchaseTickets() {
+    const purchaseAmt = this.ticketNames[0].ticket_price;
+    console.log('purchaseAmt: ', purchaseAmt);
     this.ticketService.purchaseTickets();
     // this.show = false;
   }
